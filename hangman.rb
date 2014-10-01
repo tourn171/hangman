@@ -13,14 +13,14 @@ class Player < Object
     
     def save
         if Dir.exists?('saves')
-            Dir.chdir('saves')
-            File.open("#{name}#{Time.now.strftime("%Y-%m-%d")}.txt",'w') do |f|
-                f.write "#{@name}\n"
-                f.write "#{@word}\n"
-                f.write "#{@current}\n"
-                f.write "#{@letters}\n"
+            Dir.chdir('saves') do 
+                File.open("#{name}#{Time.now.strftime("%Y-%m-%d")}.txt",'w') do |f|
+                    f.write "#{@name}\n"
+                    f.write "#{@word}\n"
+                    f.write "#{@current}\n"
+                    f.write "#{@letters}\n"
+                end
             end
-            
         else
             Dir.mkdir('saves')
                 Dir.chdir('saves') do
